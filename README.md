@@ -22,7 +22,7 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
 ```
                     ┌──────────────────────────────┐
                     │        wazuh-server           │
-                    │   Ubuntu Server 22.04         │
+                    │   Ubuntu Server 24.04         │
                     │   192.168.100.10              │
                     │                               │
                     │  ┌─────────┐ ┌────────────┐  │
@@ -37,7 +37,7 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
               │                                   │
    ┌──────────┴──────────┐           ┌────────────┴────────┐
    │    agent-linux      │           │    agent-windows     │
-   │  Ubuntu 22.04       │           │  Windows Server 2022 │
+   │  Ubuntu 24.04       │           │  Windows Server 2022 │
    │  192.168.100.20     │           │  192.168.100.30      │
    └─────────────────────┘           └──────────────────────┘
 ```
