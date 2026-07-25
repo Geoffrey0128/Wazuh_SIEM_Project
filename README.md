@@ -48,7 +48,7 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
 
 | VM | OS | RAM | vCPU | Disque | Rôle |
 |---|---|---|---|---|---|
-| wazuh-server | Ubuntu Server 22.04 | 6 Go | 4 | 50 Go | Manager + Indexer + Dashboard |
+| wazuh-server | Ubuntu Server 22.04 | 8 Go | 4 | 50 Go | Manager + Indexer + Dashboard |
 | agent-linux | Ubuntu 22.04 | 2 Go | 2 | 20 Go | Endpoint Linux supervisé |
 | agent-windows | Windows Server 2022 | 4 Go | 2 | 40 Go | Endpoint Windows supervisé |
 
