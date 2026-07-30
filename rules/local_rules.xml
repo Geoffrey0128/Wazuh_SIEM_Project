@@ -1,0 +1,49 @@
+<!--
+  Règles de détection personnalisées
+  À déployer dans : /var/ossec/etc/rules/local_rules.xml
+  Les IDs custom doivent être >= 100000 pour ne pas entrer en conflit
+  avec le ruleset officiel Wazuh.
+  Recharger : sudo systemctl restart wazuh-manager
+-->
+
+<group name="local,syslog,sshd,">
+
+  <!-- Escalade : élève le niveau quand de multiples échecs SSH
+       proviennent d'une même source (complète les règles natives 5710/5712) -->
+  <rule id="100001" level="12" frequency="6" timeframe="120">
+    <if_matched_sid>5710</if_matched_sid>
+    <same_source_ip />
+    <description>Brute force SSH probable : échecs répétés depuis $(srcip)</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+    <group>authentication_failures,pci_dss_11.4,</group>
+  </rule>
+
+  <!-- Connexion SSH réussie hors plage horaire (exemple : 22h-6h) -->
+  <rule id="100002" level="8">
+    <if_sid>5715</if_sid>
+    <time>10:00 pm - 6:00 am</time>
+    <description>Connexion SSH réussie en dehors des heures ouvrées depuis $(srcip)</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>authentication_success,</group>
+  </rule>
+
+</group>
+
+<group name="local,syscheck,">
+
+  <!-- Alerte renforcée sur modification de fichiers critiques d'authentification -->
+  <rule id="100010" level="12">
+    <if_group>syscheck</if_group>
+    <field name="file">/etc/(passwd|shadow|sudoers)$</field>
+    <description>Modification d'un fichier d'authentification critique : $(file)</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+    <group>pci_dss_10.2.5,</group>
+  </rule>
+
+</group>

@@ -1,0 +1,2 @@
+# Placer ici les décodeurs personnalisés (custom_decoders.xml).
+# Déploiement : /var/ossec/etc/decoders/ sur le manager.

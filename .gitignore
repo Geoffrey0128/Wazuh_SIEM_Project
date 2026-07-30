@@ -1,0 +1,48 @@
+# ============================
+# Secrets et authentification
+# ============================
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+.env
+.env.*
+certs/
+wazuh-install-files/
+wazuh-install-files.tar
+wazuh-passwords*.txt
+authd.pass
+client.keys
+
+# ============================
+# Logs et données sensibles
+# ============================
+*.log
+alerts/
+archives/
+logs/
+*.json.gz
+
+# ============================
+# VMs et images (trop lourdes)
+# ============================
+*.vmdk
+*.vmx
+*.iso
+*.ova
+*.ovf
+*.nvram
+*.vmem
+*.vmsn
+*.vmss
+
+# ============================
+# Système / éditeurs
+# ============================
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/

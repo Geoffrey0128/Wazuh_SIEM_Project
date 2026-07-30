@@ -1,0 +1,38 @@
+<!--
+  Extrait ANONYMISÉ de la configuration du manager.
+  Fichier réel : /var/ossec/etc/ossec.conf
+  Ne contient volontairement AUCUN secret. Seuls les blocs pertinents
+  du projet sont reproduits ici (l'ossec.conf complet est beaucoup plus long).
+-->
+
+<ossec_config>
+
+  <!-- ===== Détection de vulnérabilités (CVE) ===== -->
+  <vulnerability-detection>
+    <enabled>yes</enabled>
+    <index-status>yes</index-status>
+    <feed-update-interval>60m</feed-update-interval>
+  </vulnerability-detection>
+
+  <!-- ===== Active Response : blocage d'IP en cas de brute force ===== -->
+  <command>
+    <name>firewall-drop</name>
+    <executable>firewall-drop</executable>
+    <timeout_allowed>yes</timeout_allowed>
+  </command>
+
+  <active-response>
+    <command>firewall-drop</command>
+    <location>local</location>
+    <!-- Se déclenche sur nos règles de brute force (niveau >= 10) -->
+    <rules_id>100001</rules_id>
+    <timeout>600</timeout>
+  </active-response>
+
+  <!-- ===== Chargement des règles/décodeurs custom ===== -->
+  <ruleset>
+    <rule_dir>etc/rules</rule_dir>
+    <decoder_dir>etc/decoders</decoder_dir>
+  </ruleset>
+
+</ossec_config>
