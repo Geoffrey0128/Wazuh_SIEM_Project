@@ -23,7 +23,7 @@ sudo bash ./wazuh-install.sh -a
 
 À la fin de l'installation :
 
-![alt text](<Capture d'écran 2026-07-24 210259.png>)
+![alt text](<img/Capture d'écran 2026-07-24 210259.png>)
 
 - Noter les identifiants admin affichés → les stocker **hors du repo** (gestionnaire de mots de passe)
 - Vérifier l'accès au dashboard : `https://192.168.154.153:443` depuis la machine hôte
@@ -35,7 +35,7 @@ sudo systemctl status wazuh-manager wazuh-indexer wazuh-dashboard
 
 📸 *Capture à insérer : dashboard accessible, page d'accueil.*
 
-![alt text](image.png)
+![alt text](img/image.png)
 
 Snapshot `02-wazuh-ready`.
 

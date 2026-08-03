@@ -89,7 +89,7 @@ DROP       0    --  192.168.154.1        0.0.0.0/0
 
 **Preuve du blocage effectif.** Pendant la fenêtre de 600 secondes, toute nouvelle connexion SSH depuis 192.168.154.1 vers l'agent est rejetée (timeout), alors qu'elle répondait immédiatement avant l'attaque.
 
-![alt text](image-5.png)
+![alt text](img/image-5.png)
 
 ### Chaîne complète détection → réponse
 
@@ -171,7 +171,7 @@ Les deux alertes sont remontées **en quelques secondes** (confirmation du temps
 - La règle **native 554** (niveau 5) assure une surveillance large : tout fichier ajouté dans un répertoire surveillé est journalisé.
 - La règle **custom 100010** (niveau 12) surenchérit sur les fichiers les plus sensibles : une modification de `/etc/passwd` remonte en priorité haute, car elle peut signaler une création de compte malveillant ou une élévation de privilèges.
 
-![alt text](<Capture d'écran 2026-08-03 201655.png>)
+![alt text](<img/Capture d'écran 2026-08-03 201655.png>)
 
 ### Nettoyage
 
@@ -234,7 +234,7 @@ Consultation via **Agents > agent-windows > Vulnerability Detection > Inventory*
 
 **Remédiation.** Ces CVE sont corrigées par les mises à jour cumulatives Microsoft. La remédiation consiste simplement à appliquer Windows Update — ce qui illustre la valeur du module : la correction est triviale, mais encore faut-il **savoir** que la machine est vulnérable.
 
-![alt text](image-4.png)
+![alt text](img/image-4.png)
 
 ### Historique et suivi d'état
 
@@ -312,13 +312,13 @@ Alerte remontée dans le dashboard (Threat Hunting > Events) :
 
 **Chaîne de détection validée :** Sysmon capture la création du processus (Event ID 1) → l'agent Wazuh transmet l'événement au manager → le manager applique la règle custom 100020 → l'alerte s'affiche dans le dashboard.
 
-![alt text](image-1-1.png)
-![alt text](image-2.png)
+![alt text](img/image-1-1.png)
+![alt text](img/image-2.png)
 
 ### Analyse d'un faux positif rencontré
 
 Au cours des tests, une alerte de **niveau 15** (sévérité maximale) est apparue sur `agent-windows` :
-![alt text](image-3.png)
+![alt text](img/image-3.png)
 
 | Champ | Valeur |
 |---|---|
@@ -378,7 +378,7 @@ Consultation via **Agents > agent-linux > Configuration Assessment**.
 | **Score de conformité** | **40 %** |
 | Date du scan | 2026-08-03 20:09 |
 
-![alt text](<Capture d'écran 2026-08-03 202952.png>)
+![alt text](<img/Capture d'écran 2026-08-03 202952.png>)
 
 ### Analyse
 
