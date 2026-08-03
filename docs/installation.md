@@ -6,13 +6,12 @@
 
 ### Réseau
 
-1. Créer/vérifier le réseau **Host-only** (VMnet1) : `192.168.100.0/24`, DHCP désactivé
-2. Chaque VM : carte 1 = Host-only (IP statique), carte 2 = NAT (mises à jour uniquement)
+1. Chaque VM : carte 1 = NAT 
 
 ### VM wazuh-server (Ubuntu desktop 24.04)
 
 - 8 Go RAM, 4 vCPU, 50 Go disque (provisionnement dynamique)
-- IP statique : `192.168.100.10` (netplan)
+- IP statique : `192.168.154.154` (netplan)
 - Snapshot `01-clean-os` après installation + `sudo apt update && sudo apt upgrade`
 
 ## 2. Installation du serveur Wazuh (all-in-one)
@@ -27,7 +26,7 @@ sudo bash ./wazuh-install.sh -a
 ![alt text](<Capture d'écran 2026-07-24 210259.png>)
 
 - Noter les identifiants admin affichés → les stocker **hors du repo** (gestionnaire de mots de passe)
-- Vérifier l'accès au dashboard : `https://192.168.100.10:443` depuis la machine hôte
+- Vérifier l'accès au dashboard : `https://192.168.154.153:443` depuis la machine hôte
 - Vérifier les services :
 
 ```bash
@@ -91,9 +90,18 @@ Get-Service -Name "Wazuh"
 
 Sysmon enrichit énormément les logs Windows (création de processus, connexions réseau, etc.) :
 
-1. Télécharger Sysmon (Sysinternals) et une config éprouvée (ex. SwiftOnSecurity)
-2. `sysmon64.exe -accepteula -i sysmonconfig.xml`
-3. Ajouter la collecte du canal Sysmon dans la config de l'agent (voir `config/agents/agent.conf`)
+```powershell
+Invoke-WebRequest -Uri "https://download.sysinternals.com/files/Sysmon.zip" -OutFile "$env:USERPROFILE\Downloads\Sysmon.zip"
+Expand-Archive "$env:USERPROFILE\Downloads\Sysmon.zip" -DestinationPath "C:\Sysmon" -Force
+
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml" -OutFile "C:\Sysmon\sysmonconfig.xml"
+
+C:\Sysmon\Sysmon64.exe -accepteula -i C:\Sysmon\sysmonconfig.xml
+Get-Service Sysmon64
+Get-WinEvent -ListLog "Microsoft-Windows-Sysmon/Operational" | Select-Object LogName, RecordCount
+
+```
+Ajouter la collecte du canal Sysmon dans la config de l'agent (voir `config/agents/agent.conf`)
 
 ## 5. Déploiement des configurations du repo
 

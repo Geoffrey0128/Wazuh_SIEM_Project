@@ -23,7 +23,7 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
                     ┌──────────────────────────────┐
                     │        wazuh-server           │
                     │   Ubuntu Server 24.04         │
-                    │   192.168.100.10              │
+                    │   192.168.154.154.153         │
                     │                               │
                     │  ┌─────────┐ ┌────────────┐  │
                     │  │ Manager │ │  Indexer   │  │
@@ -38,7 +38,7 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
    ┌──────────┴──────────┐           ┌────────────┴────────┐
    │    agent-linux      │           │    agent-windows     │
    │  Ubuntu 24.04       │           │  Windows Server 2022 │
-   │  192.168.100.20     │           │  192.168.100.30      │
+   │  192.168.154.154     │           │  192.168.154.155      │
    └─────────────────────┘           └──────────────────────┘
 ```
 
@@ -49,7 +49,7 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
 | VM | OS | RAM | vCPU | Disque | Rôle |
 |---|---|---|---|---|---|
 | wazuh-server | Ubuntu Server 22.04 | 8 Go | 4 | 50 Go | Manager + Indexer + Dashboard |
-| agent-linux | Ubuntu 22.04 | 2 Go | 2 | 20 Go | Endpoint Linux supervisé |
+| agent-linux | Ubuntu 22.04 | 4 Go | 2 | 20 Go | Endpoint Linux supervisé |
 | agent-windows | Windows Server 2022 | 4 Go | 2 | 40 Go | Endpoint Windows supervisé |
 
 **Hyperviseur :** VMware Workstation — Réseau Host-only (`192.168.100.0/24`) + NAT pour les mises à jour.
@@ -74,7 +74,6 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
 ├── config/
 │   ├── manager/           # Configuration du manager (ossec.conf)
 │   ├── agents/            # Configuration centralisée des agents
-│   └── decoders/          # Décodeurs personnalisés
 ├── rules/                 # Règles de détection custom (local_rules.xml)
 ├── scripts/
 │   └── active-response/   # Scripts de réponse automatique

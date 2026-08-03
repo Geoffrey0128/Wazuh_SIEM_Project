@@ -42,13 +42,3 @@ Procédures simplifiées inspirées du cycle NIST (Détection → Analyse → Co
 | **Leçons** | Renforcer les règles de détection, envisager une politique AppLocker/WDAC |
 
 ---
-
-## Contacts et escalade (template)
-
-> En lab, section symbolique — en entreprise, lister ici l'équipe SOC, le RSSI, les astreintes.
-
-| Rôle | Contact |
-|---|---|
-| Analyste N1 | — |
-| Analyste N2 / IR | — |
-| RSSI | — |
