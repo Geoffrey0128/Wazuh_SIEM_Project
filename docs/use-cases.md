@@ -406,5 +406,8 @@ Ce cas illustre une facette de la cybersécurité complémentaire à la détecti
 | Tactique | Technique | Cas |
 |---|---|---|
 | Credential Access | T1110 Brute Force | 1 |
-| Persistence | T1136 Create Account | 2 |
+| Persistence | T1098 Account Manipulation | 2 |
+| Privilege Escalation | T1068 Exploitation for Privilege Escalation | 3 |
 | Execution | T1059.001 PowerShell | 4 |
+
+> Le cas d'usage n°5 (SCA / CIS Benchmark) évalue une posture de durcissement et ne correspond pas à une technique d'attaque MITRE ATT&CK ; il relève plutôt de référentiels de conformité (CIS Controls, PCI-DSS, ISO 27001).
