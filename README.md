@@ -23,7 +23,7 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
                     ┌──────────────────────────────┐
                     │        wazuh-server           │
                     │   Ubuntu Server 24.04         │
-                    │   192.168.154.154.153         │
+                    │   192.168.154.153             │
                     │                               │
                     │  ┌─────────┐ ┌────────────┐  │
                     │  │ Manager │ │  Indexer   │  │
@@ -37,22 +37,20 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
               │                                   │
    ┌──────────┴──────────┐           ┌────────────┴────────┐
    │    agent-linux      │           │    agent-windows     │
-   │  Ubuntu 24.04       │           │  Windows Server 2022 │
+   │  Ubuntu 24.04       │           │  Windows 11 Pro       │
    │  192.168.154.154     │           │  192.168.154.155      │
    └─────────────────────┘           └──────────────────────┘
 ```
-
-📖 Détails : [docs/architecture.md](docs/architecture.md)
 
 ## 🖥️ Environnement de lab
 
 | VM | OS | RAM | vCPU | Disque | Rôle |
 |---|---|---|---|---|---|
-| wazuh-server | Ubuntu Server 22.04 | 8 Go | 4 | 50 Go | Manager + Indexer + Dashboard |
-| agent-linux | Ubuntu 22.04 | 4 Go | 2 | 20 Go | Endpoint Linux supervisé |
-| agent-windows | Windows Server 2022 | 4 Go | 2 | 40 Go | Endpoint Windows supervisé |
+| wazuh-server | Ubuntu Server 24.04 | 8 Go | 4 | 50 Go | Manager + Indexer + Dashboard |
+| agent-linux | Ubuntu 24.04 | 4 Go | 2 | 20 Go | Endpoint Linux supervisé |
+| agent-windows | Windows 11 Pro | 4 Go | 2 | 40 Go | Endpoint Windows supervisé |
 
-**Hyperviseur :** VMware Workstation — Réseau Host-only (`192.168.100.0/24`) + NAT pour les mises à jour.
+**Hyperviseur :** VMware Workstation — Réseau Host-only (`192.168.154.0/24`) + NAT pour les mises à jour.
 
 ## 🎯 Cas d'usage couverts
 

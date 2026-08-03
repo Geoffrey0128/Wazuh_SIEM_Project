@@ -11,7 +11,7 @@
 ### VM wazuh-server (Ubuntu desktop 24.04)
 
 - 8 Go RAM, 4 vCPU, 50 Go disque (provisionnement dynamique)
-- IP statique : `192.168.154.154` (netplan)
+- IP statique : `192.168.154.153` (netplan)
 - Snapshot `01-clean-os` après installation + `sudo apt update && sudo apt upgrade`
 
 ## 2. Installation du serveur Wazuh (all-in-one)
@@ -41,7 +41,7 @@ Snapshot `02-wazuh-ready`.
 
 ## 3. Enrôlement de l'agent Linux
 
-Sur la VM `agent-linux` (Ubuntu 24.04, IP `192.168.100.20`) :
+Sur la VM `agent-linux` (Ubuntu 24.04, IP `192.168.154.154`) :
 
 ```bash
 sudo apt-get install -y gnupg apt-transport-https
@@ -54,7 +54,7 @@ echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4
 
 sudo apt-get update
 
-sudo WAZUH_MANAGER="192.168.100.10" WAZUH_AGENT_NAME="agent-linux" apt-get install -y wazuh-agent
+sudo WAZUH_MANAGER="192.168.154.153" WAZUH_AGENT_NAME="agent-linux" apt-get install -y wazuh-agent
 
 sudo systemctl daemon-reload
 sudo systemctl enable wazuh-agent
@@ -73,7 +73,7 @@ L'agent doit apparaître avec le statut `Active`.
 
 ## 4. Enrôlement de l'agent Windows
 
-Sur la VM `agent-windows` (Windows 11 pro, IP `192.168.100.30`), en PowerShell administrateur :
+Sur la VM `agent-windows` (Windows 11 pro, IP `192.168.154.155`), en PowerShell administrateur :
 
 ```powershell
 Invoke-WebRequest -Uri "https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.6-1.msi" -OutFile "$env:USERPROFILE\Downloads\wazuh-agent-4.14.6-1.msi"
