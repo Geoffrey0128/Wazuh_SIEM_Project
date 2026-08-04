@@ -1,0 +1,38 @@
+name: Lint XML configs
+
+on:
+  push:
+    paths:
+      - "rules/**"
+      - "config/**"
+  pull_request:
+    paths:
+      - "rules/**"
+      - "config/**"
+
+jobs:
+  xmllint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install libxml2-utils
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+
+      - name: Validate manager/agent config files (single root element)
+        run: |
+          set -e
+          for f in config/manager/*.conf config/manager/*.conf.example config/manager/*.xml config/agents/*.conf config/agents/*.conf.example config/agents/*.xml; do
+            [ -f "$f" ] || continue
+            echo "Checking $f"
+            xmllint --noout "$f"
+          done
+
+      - name: Validate rules files (ruleset groups, wrapped for validation)
+        run: |
+          set -e
+          for f in rules/*.xml; do
+            [ -f "$f" ] || continue
+            echo "Checking $f"
+            { echo "<root>"; cat "$f"; echo "</root>"; } | xmllint --noout -
+          done
