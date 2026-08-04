@@ -47,3 +47,26 @@
   </rule>
 
 </group>
+
+<group name="local,windows,sysmon,">
+
+  <!-- PowerShell encodé en base64 (technique d'obfuscation d'attaquant) -->
+  <rule id="100020" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)-e(nc|ncodedcommand)?\s</field>
+    <description>PowerShell encode (base64) detecte : possible obfuscation malveillante</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+  </rule>
+
+  <!-- Tuning : faux positif PowerShell Execution Policy test -->
+  <!-- Le fichier __PSScriptPolicyTest_ est créé automatiquement par PowerShell -->
+  <!-- pour tester l'Execution Policy. On abaisse le niveau pour réduire le bruit. -->
+  <rule id="100030" level="0">
+    <if_sid>92213</if_sid>
+    <field name="win.eventdata.targetFilename" type="pcre2">__PSScriptPolicyTest_</field>
+    <description>PowerShell Execution Policy test (faux positif connu, ignore)</description>
+  </rule>
+
+</group>

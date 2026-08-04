@@ -101,7 +101,7 @@ Get-Service Sysmon64
 Get-WinEvent -ListLog "Microsoft-Windows-Sysmon/Operational" | Select-Object LogName, RecordCount
 
 ```
-Ajouter la collecte du canal Sysmon dans la config de l'agent (voir `config/agents/agent.conf`)
+Ajouter la collecte du canal Sysmon directement dans l'`ossec.conf` local de l'agent Windows (extrait à coller, voir `config/agents/agent-windows.conf`)
 
 ## 5. Déploiement des configurations du repo
 

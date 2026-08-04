@@ -56,11 +56,11 @@ Déploiement, configuration et exploitation d'un SIEM **Wazuh** dans un lab virt
 
 | # | Cas d'usage | Statut |
 |---|---|---|
-| 1 | Détection de brute force SSH (+ blocage auto de l'IP) | 🔲 À faire |
-| 2 | Surveillance d'intégrité de fichiers (FIM) sur `/etc` | 🔲 À faire |
-| 3 | Détection de vulnérabilités (CVE) sur les agents | 🔲 À faire |
-| 4 | Détection d'événements Windows suspects (Sysmon) | 🔲 À faire |
-| 5 | Audit de conformité CIS Benchmark | 🔲 À faire |
+| 1 | Détection de brute force SSH (+ blocage auto de l'IP) | ✅ Fait |
+| 2 | Surveillance d'intégrité de fichiers (FIM) sur `/etc` | ✅ Fait |
+| 3 | Détection de vulnérabilités (CVE) sur les agents | ✅ Fait |
+| 4 | Détection d'événements Windows suspects (Sysmon) | ✅ Fait |
+| 5 | Audit de conformité CIS Benchmark | ✅ Fait |
 
 📖 Détails et preuves (captures d'alertes) : [docs/use-cases.md](docs/use-cases.md)
 

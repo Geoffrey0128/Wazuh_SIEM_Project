@@ -1,6 +1,6 @@
 # Cas d'usage de détection
 
-Chaque cas suit la même trame : **objectif → mise en place → simulation → résultat attendu → preuve**. Insérer les captures d'alertes dans un dossier `docs/img/` (non versionné s'il contient des données sensibles).
+Chaque cas suit la même trame : **objectif → mise en place → simulation → résultat attendu → preuve**. Les captures d'alertes sont dans le dossier [`docs/img/`](img/).
 
 ---
 
