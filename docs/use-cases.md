@@ -87,8 +87,7 @@ DROP       0    --  192.168.154.1        0.0.0.0/0
 
 **Preuve du blocage effectif.** Pendant la fenêtre de 600 secondes, toute nouvelle connexion SSH depuis 192.168.154.1 vers l'agent est rejetée (timeout), alors qu'elle répondait immédiatement avant l'attaque.
 
-![alt text](img/image-5.png)
-
+![alt text](<img/Capture d'écran 2026-08-04 165610.png>)
 ### Chaîne complète détection → réponse
 
 1. La machine physique lance un brute force SSH contre l'agent-linux
