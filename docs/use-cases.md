@@ -55,8 +55,6 @@ Bloc `<active-response>` dans `/var/ossec/etc/ossec.conf`, associé à la règle
 - `location: local` : le blocage s'exécute sur l'agent qui a généré l'alerte
 - `timeout: 600` : l'IP est débloquée automatiquement après 10 minutes
 
-> ⚠️ **Piège rencontré :** le bloc `<active-response>` était initialement entouré de balises de commentaire XML (`<!-- ... -->`), donc ignoré par Wazuh. La détection fonctionnait mais aucun blocage ne se déclenchait. Décommenter le bloc puis redémarrer le manager (`systemctl restart wazuh-manager`) a résolu le problème. Leçon : toujours vérifier qu'un bloc de configuration n'est pas commenté, et redémarrer le manager après toute modification.
-
 ### Simulation
 
 Depuis la machine physique (PowerShell), 12 tentatives de connexion SSH avec des utilisateurs inexistants :
